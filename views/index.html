@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel=stylesheet href="/css/style.css"> -->
+    <link rel=stylesheet href="/public/css/style.css">
+</head>
+
+<body>
+    <header>
+        <p style="color: black;">ひみ</p>
+    </header>
+    <a href="/shop">投稿を交換しに行く</a>
+    <div class="post">
+        <span class="user-name">がっしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <div class="post">
+        <span class="user-name">がっしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <div class="post">
+        <span class="user-name">がっしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+
+    <h2>自分の投稿</h2>
+    <a href="/post/new">新しく自分の秘密を投稿する</a>
+    <div class="post">
+        <span class="user-name">わたしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <div class="post">
+        <span class="user-name">わたしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <div class="post">
+        <span class="user-name">わたしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <div class="post">
+        <span class="user-name">わたしー</span>
+        <p>もらった投稿内容投稿内容</p>
+    </div>
+    <% @posts.each do |post| %>
+        <div>
+            <%= post.user.name %>,
+                <%= post.contents %>,
+                    <%= post.yaba %>
+        </div>
+        <% end %>
+</body>
+
+</html>
