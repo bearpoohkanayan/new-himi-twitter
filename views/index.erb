@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/shop">投稿を交換しに行く</a>
+    <h2>もらった投稿</h2>
+    <p>もらった投稿1</p>
+    <p>もらった投稿2</p>
+                               <p>もらった投稿3</p>
+
+    <h2>自分の投稿</h2>
+    <a href="/post/new">新しく自分の秘密を投稿する</a>
+    <p>自分の投稿1</p>
+    <p>自分の投稿2</p>
+    <p>自分の投稿3</p>
+    <% @posts.each do |post| %>
+        <div>
+            <%= post.user.name %>,
+            <%= post.contents %>,
+            <%= post.yaba %>
+        </div>
+    <% end %>
+</body>
+</html>

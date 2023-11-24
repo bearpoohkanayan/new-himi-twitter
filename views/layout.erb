@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="">
+            <div class="">
+                <a href="/">ひみついったー</a>
+                <a href="/post/new">投稿</a>
+            </div>
+            <ul>
+                <% if !current_user.nil? %>
+                <li>おはようございます、<%= current_user.name %>さん</li>
+                <li><a href="/signout">ログアウト</a></li>
+                <% else %>
+                <li>新規ユーザーですか？</li>
+                <li><a href="/signin">ログイン</a></li>
+                <li><a href="/signup">新規登録</a></li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+    <%= yield %>
+</body>
+</html>

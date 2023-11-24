@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    text-align: center;
+}
+
+body {
+    color: #fff;
+    background-color: #242526;
+}
+
+.box{
+    width: 100%;
+    border-bottom:  1px solid #fff;
+    padding: 30px 0;
+}
+
+.button {
+    color: #000;
+    background-color: #fff;
+    padding: 5px 25px;
+    border-radius: 50px;
+    display: block;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: underline;
+    color: #fff;
+    /*color: #fff;*/
+}
+
+.button a{
+    color: #000;
+    text-decoration: none;
+}
+
+li{
+    list-style:none;
+}
