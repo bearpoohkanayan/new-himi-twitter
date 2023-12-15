@@ -7,9 +7,13 @@ helpers do
   def current_user
     User.find_by(id: session[:user])
   end
+  def require_login
+    redirect '/signup' unless current_user
+  end
 end
 
-  get '/' do
+get '/' do
+  require_login
   @posts = current_user.posts
   erb :index
 end
@@ -54,7 +58,7 @@ post '/signin' do
 end
 
 get '/signin' do
-  erb :sign_in
+  erb :sign_up
 end
 
 get '/post/new' do
