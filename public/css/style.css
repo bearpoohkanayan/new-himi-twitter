@@ -30,6 +30,6 @@ header {
 }
 
 a {
-    text-decoration: underline;
+    text-decoration: none;
     color: #99ccff;
 }
