@@ -14,6 +14,8 @@ end
 
 get '/' do
   require_login
+  user_yaba = current_user.total_yaba_count # ユーザーが持っているyaba数を取得
+  @post = Post.where('yaba < ?', user_yaba).order("RANDOM()").first # yaba値がユーザーのyaba数より低い投稿をランダムに1つ選択
   @posts = current_user.posts
   erb :index
 end
@@ -23,9 +25,12 @@ get '/post/new' do
 end
 
 post '/post/new' do
-  # Post.create(contents: params[:contents],yaba: params[:yaba])
-  current_user.posts.create(contents: params[:contents],yaba: rand(1..5))
-  redirect '/post/ok'
+  yaba_value = rand(1..5)
+  @yaba = yaba_value
+  @contents = params[:contents]
+  current_user.posts.create(contents: @contents, yaba: @yaba)
+  
+  redirect "/post/ok"
 end
 
 get '/signup' do
