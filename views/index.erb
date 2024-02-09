@@ -7,7 +7,9 @@
     <link rel=stylesheet href="/css/style.css">
 </head>
 <body>
-    <a href="/shop">投稿を交換しに行く</a>
+    <form action="/shop" method="POST">
+    <input type="submit" value="交換するぜyeah">
+    </form>
     <h2>もらった投稿</h2>
     <% if @post %>
         <div>

@@ -73,3 +73,12 @@ end
 get '/post/ok' do
   erb :post_ok
 end
+
+# うふふ
+post '/shop' do
+  require_login
+  user_yaba = current_user.total_yaba_count # ユーザーが持っているyaba数を取得
+  @post = Post.where('yaba < ?', user_yaba).order("RANDOM()").first # yaba値がユーザーのyaba数より低い投稿をランダムに1つ選択
+  current_user.shared_posts.create(post_id: @post.id)
+  redilect '/'
+end
