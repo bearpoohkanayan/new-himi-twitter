@@ -3,10 +3,12 @@ Bundler.require
 require 'sinatra/reloader' if development?
 require './models.rb'
 enable :sessions
+
 helpers do
   def current_user
     User.find_by(id: session[:user])
   end
+  
   def require_login
     redirect '/signup' unless current_user
   end
@@ -14,8 +16,7 @@ end
 
 get '/' do
   require_login
-  user_yaba = current_user.total_yaba_count # ユーザーが持っているyaba数を取得
-  @post = Post.where('yaba < ?', user_yaba).order("RANDOM()").first # yaba値がユーザーのyaba数より低い投稿をランダムに1つ選択
+  @exchange_posts = current_user.exchanged_posts
   @posts = current_user.posts
   erb :index
 end
@@ -46,7 +47,7 @@ post '/signup' do
     if user.persisted?
       session[:user] = user.id
     end
-    redirect'/'
+    redirect '/'
 end
 
 get '/signout' do
@@ -74,11 +75,10 @@ get '/post/ok' do
   erb :post_ok
 end
 
-# うふふ
 post '/shop' do
   require_login
   user_yaba = current_user.total_yaba_count # ユーザーが持っているyaba数を取得
   @post = Post.where('yaba < ?', user_yaba).order("RANDOM()").first # yaba値がユーザーのyaba数より低い投稿をランダムに1つ選択
-  current_user.shared_posts.create(post_id: @post.id)
-  redilect '/'
+  current_user.exchange_posts.create(post_id: @post.id)
+  redirect '/'
 end

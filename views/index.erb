@@ -11,12 +11,12 @@
     <input type="submit" value="交換するぜyeah">
     </form>
     <h2>もらった投稿</h2>
-    <% if @post %>
-        <div>
-            <%= @post.user.name %>,
-            <%= @post.contents %>,
-            <%= @post.yaba %>
-        </div>
+    <% if @exchange_posts != nil %>
+        <% @exchange_posts.each do |exchange_post| %>
+            <p><%= exchange_post.user.name %></p>
+            <p><%= exchange_post.contents %></p>
+            <p><%= exchange_post.yaba %></p>
+        <% end %>
     <% else %>
         <p>もらった投稿はありません。</p>
     <% end %>
